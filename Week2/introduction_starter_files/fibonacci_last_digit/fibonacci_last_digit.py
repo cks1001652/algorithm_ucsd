@@ -1,5 +1,6 @@
 # Uses python3
 import sys
+import numpy as np
 
 # def get_fibonacci_last_digit_naive(n):
 #     if n <= 1:
@@ -17,8 +18,13 @@ import sys
 def get_fibonacci_last_digit_naive(n):
     if n <= 1:
         return n
-
-    return int(1/np.sqrt(5)*(((1+np.sqrt(5))/2)**n - ((1-np.sqrt(5))/2)**n)) %10
+    def cal_fib3min(n):
+        a, b = 0, 1
+        while n > 0:
+            yield b
+            a, b = b, a + b
+            n -= 1
+    return list(cal_fib3min(n))[-1] %10
 
 
 
